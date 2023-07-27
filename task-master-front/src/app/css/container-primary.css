@@ -1,5 +1,6 @@
 .container-primary {
     background: #302d36bb;
-    margin-top: 10%!important;
     color: #fff;
+    padding: 50px!important;
+    max-width: 400px;
 }
