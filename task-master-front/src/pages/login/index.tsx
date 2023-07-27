@@ -6,15 +6,16 @@ import ButtonPrimary from "@/app/components/forms/button-primary/button-primary"
 import React from "react"
 import { useState } from "react"
 import Link from "next/link"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import {loginBody, validateLoginBody} from "@/app/core/repository/login/login-body" 
 import { httpPost } from "@/app/core/http-request-contract"
 import { handleInput } from "@/app/core/repository/handle-input"
 
 
+
 export default function LoginComponent(){
 
-    //const router = useRouter();
+    const router = useRouter();
     const [values, setValues] = useState(loginBody)
 
     React.useEffect(()=>{
@@ -22,7 +23,8 @@ export default function LoginComponent(){
     },[])
 
     const validateSesion = ()=>{
-        //if (sessionStorage.getItem("user") != undefined)
+        if (sessionStorage.getItem("user") != undefined)
+        console.log(sessionStorage.getItem("user"));
         //router.push("/dashboard")
     }
 
