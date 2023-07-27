@@ -1,5 +1,5 @@
 import "@/app/css/login.css"
-import "@/app/css/container-primary.css"
+import "@/app/css/container-login.css"
 import "bootstrap/dist/css/bootstrap.css"
 import InputText from "@/app/components/forms/input-text/input-text"
 import ButtonPrimary from "@/app/components/forms/button-primary/button-primary"
@@ -38,7 +38,7 @@ export default function LoginComponent(){
     return(
         <section className="login-bg">
             <div className="container">
-                    <div className="container-primary">
+                    <div className="container-login">
                         <h1>Welcome</h1>
                         <form>
                         <InputText id='email' hint="Email" type='email' handleInput={[handleInput, values, setValues]} />
@@ -47,7 +47,7 @@ export default function LoginComponent(){
                         <br /><br />
                         <Link href={"/register"}>Don´t have an account? Please register here.</Link>
                         <br />
-                        <Link href={"/recover"}>Forgot your password? Click here</Link>
+                        <Link href={"/reset"}>Forgot your password? Click here</Link>
                         </form>
                     </div>
             </div>

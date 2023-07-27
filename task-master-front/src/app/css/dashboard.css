@@ -1,0 +1,11 @@
+section.dashboard-bg{
+    background-image: url("../assets/images/bg-task.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+section.dashboard-bg a{
+    color: #fff;
+    font-size: 12px;
+}

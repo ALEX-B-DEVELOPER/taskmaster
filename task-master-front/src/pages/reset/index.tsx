@@ -13,30 +13,24 @@ import { registerBody, validateRegisterBody } from "@/app/core/repository/regist
 
 
 
-export default function RegisterComponent(){
+export default function ResetComponent(){
 
     const router = useRouter();
     const [values, setValues] = useState(registerBody)
 
     //router.push("/login")
 
-    const validateRegister = async () =>{
-        let validation = validateRegisterBody(values)
-        if (typeof validation === 'string') alert (validation)
-        else httpPost("users", values).then((response) => { console.log(response) }).catch((err) => { console.log(err) });
+    const validateUser = async () =>{
     }
 
     return(
         <section className="login-bg">
             <div className="container">
                     <div className="container-login">
-                        <h1>Register</h1>
+                        <h1>Password Reset</h1>
                         <form>
-                        <InputText id='name' hint="Name" type='text' handleInput={[handleInput, values, setValues]} />
-                        <InputText id='lastName' hint="Last Name" type='text' handleInput={[handleInput, values, setValues]} />
                         <InputText id='email' hint="Email" type='email' handleInput={[handleInput, values, setValues]} />
-                        <InputText id='password' hint="Password" type='password' handleInput={[handleInput, values, setValues]} />
-                        <ButtonPrimary text="Sign Up" callBack={()=>{validateRegister()}}/>
+                        <ButtonPrimary text="Sign Up" callBack={()=>{validateUser()}}/>
                         <br /><br />
                         <Link href={"/login"}>Back to Login</Link>
                         </form>
