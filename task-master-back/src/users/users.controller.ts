@@ -3,7 +3,6 @@ import { UsersService } from './users.service';
 import { Users } from './model/users.entity';
 import { UserCreateDto } from './dto/user.create.dto';
 import { UserLoginDto } from './dto/user.login.dto';
-import { error } from 'console';
 
 @Controller('users')
 export class UsersController {
