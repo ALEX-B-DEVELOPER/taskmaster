@@ -21,6 +21,7 @@ export default function CreateTaskComponent() {
         <InputText hint="Title" id="title" type="text" handleInput={[handleInput, values, setValues]} />
         <InputText hint="Date" id="datetime" type="date" handleInput={[handleInput, values, setValues]} />
         <InputText hint="Priority" id="priority" type="number" value="1" handleInput={[handleInput, values, setValues]} />
+        <InputText hint="Status" id="status" type="number" value="1" handleInput={[handleInput, values, setValues]} />
         <InputText hint="Description" id="description" type="textarea" handleInput={[handleInput, values, setValues]} />
         <ButtonPrimary text="Create Task" callBack={() => { createTask() }} />
         </form>

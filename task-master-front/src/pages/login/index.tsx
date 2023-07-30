@@ -1,3 +1,4 @@
+import "@/app/globals.css"
 import "@/app/css/login.css"
 import "@/app/css/container-login.css"
 import "bootstrap/dist/css/bootstrap.css"
@@ -23,23 +24,27 @@ export default function LoginComponent(){
     },[])
 
     const validateSesion = ()=>{
-        if (sessionStorage.getItem("user") != undefined)
-        console.log(sessionStorage.getItem("user"));
-        //router.push("/dashboard")
+        if (sessionStorage.getItem("user") !== null || undefined){
+            console.log(sessionStorage.getItem("user"))
+            //router.push("/dashboard")
+        }
     }
 
     const validateLogin = async () =>{
         let validation = validateLoginBody(values)
         if (typeof validation === 'string') alert (validation)
-        else httpPost("users/login", values).then((response) => {sessionStorage.setItem("user", response.name);}).catch((err)=>{console.log(err)});
+        else httpPost("users/login", values).then((response) => {sessionStorage.setItem("user", response.name)}).catch((err)=>{console.log(err)});
         validateSesion();
     }
 
     return(
         <section className="login-bg">
             <div className="container">
+
                     <div className="container-login">
-                        <h1>Welcome</h1>
+                        
+                        <h3>WELCOME TO</h3>
+                        <h1>TASKMASTER</h1>
                         <form>
                         <InputText id='email' hint="Email" type='email' handleInput={[handleInput, values, setValues]} />
                         <InputText id='password' hint="Password" type='password' handleInput={[handleInput, values, setValues]} />
@@ -49,7 +54,8 @@ export default function LoginComponent(){
                         <br />
                         <Link href={"/reset"}>Forgot your password? Click here</Link>
                         </form>
-                    </div>
+
+                </div>
             </div>
         </section>
     )

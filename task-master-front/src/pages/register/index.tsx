@@ -1,3 +1,4 @@
+import "@/app/globals.css"
 import "@/app/css/login.css"
 import "@/app/css/container-login.css"
 import "bootstrap/dist/css/bootstrap.css"
@@ -30,7 +31,7 @@ export default function RegisterComponent(){
         <section className="login-bg">
             <div className="container">
                     <div className="container-login">
-                        <h1>Register</h1>
+                        <h1>REGISTER</h1>
                         <form>
                         <InputText id='name' hint="Name" type='text' handleInput={[handleInput, values, setValues]} />
                         <InputText id='lastName' hint="Last Name" type='text' handleInput={[handleInput, values, setValues]} />
@@ -38,7 +39,7 @@ export default function RegisterComponent(){
                         <InputText id='password' hint="Password" type='password' handleInput={[handleInput, values, setValues]} />
                         <ButtonPrimary text="Sign Up" callBack={()=>{validateRegister()}}/>
                         <br /><br />
-                        <Link href={"/login"}>Back to Login</Link>
+                        <Link href={"/"}>Back to Login</Link>
                         </form>
                     </div>
             </div>

@@ -1,3 +1,4 @@
+import "@/app/globals.css"
 import "@/app/css/login.css"
 import "@/app/css/container-login.css"
 import "bootstrap/dist/css/bootstrap.css"
@@ -27,12 +28,12 @@ export default function ResetComponent(){
         <section className="login-bg">
             <div className="container">
                     <div className="container-login">
-                        <h1>Password Reset</h1>
+                        <h1>PASSWORD RESET</h1>
                         <form>
                         <InputText id='email' hint="Email" type='email' handleInput={[handleInput, values, setValues]} />
                         <ButtonPrimary text="Sign Up" callBack={()=>{validateUser()}}/>
                         <br /><br />
-                        <Link href={"/login"}>Back to Login</Link>
+                        <Link href={"/"}>Back to Login</Link>
                         </form>
                     </div>
             </div>

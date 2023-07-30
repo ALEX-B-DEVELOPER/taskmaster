@@ -4,3 +4,8 @@
     padding: 50px!important;
     margin: 10px;
 }
+
+.container-dashboard.fixed-panel{
+    height: 97vh;
+    overflow-y: scroll;
+}
