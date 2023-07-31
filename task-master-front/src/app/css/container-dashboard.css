@@ -2,7 +2,8 @@
     background: #302d36bb;
     color: #fff;
     padding: 50px!important;
-    margin: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
 }
 
 .container-dashboard.fixed-panel{

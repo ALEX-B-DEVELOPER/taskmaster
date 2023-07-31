@@ -16,7 +16,7 @@ export default function CreateTaskComponent() {
 
     return (
         <div className="container-dashboard">
-        <h1>New Task</h1>
+        <h3>NEW TASK</h3>
         <form>
         <InputText hint="Title" id="title" type="text" handleInput={[handleInput, values, setValues]} />
         <InputText hint="Date" id="datetime" type="date" handleInput={[handleInput, values, setValues]} />

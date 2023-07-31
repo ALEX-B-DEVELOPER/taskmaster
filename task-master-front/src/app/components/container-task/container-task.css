@@ -1,0 +1,10 @@
+.btn-edit{
+    float: right; 
+    margin-left: 3px;
+}
+
+.list-group-item.active{
+    padding: 1px;
+    background-color: #302d36;
+    border-color: #302d36!important;
+}

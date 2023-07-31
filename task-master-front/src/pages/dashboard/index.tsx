@@ -1,3 +1,4 @@
+import "@/app/globals.css"
 import "@/app/css/dashboard.css"
 import "@/app/css/container-dashboard.css"
 import "bootstrap/dist/css/bootstrap.css"
@@ -32,8 +33,13 @@ export default function DashboardComponent(){
                 <div className="row">
                     <div className="col-md-4">
                         <div className="container-dashboard">
-                            Hola <br />
-                            <a className="btn btn-outline-danger btn-sm" onClick={logout}>SALIR</a>
+                            <h1>TASK-MASTER</h1>
+                            <hr />
+                            <h4>Hi, name lastName</h4>
+                            <a className="btn btn-outline-secondary btn-sm">EDIT PROFILE</a>{' '}
+                            <a className="btn btn-outline-danger btn-sm" onClick={logout}>LOGOUT</a>   <br /> <br />  
+                            <p>Summary:<br />5 tasks not starting <br /> 5 tasks in progress <br /> 5 tasks finished </p> 
+                        
                         </div>
                         <CreateTask />
                     </div>

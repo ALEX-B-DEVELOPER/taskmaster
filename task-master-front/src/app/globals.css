@@ -8,3 +8,8 @@ h1, h2, h3, h4 {
   font-weight: bolder;
   font-style: italic;
 }
+
+.btn-primary{
+  background-color: #302d36!important;
+  border-color: #302d36!important;
+}
