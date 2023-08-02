@@ -1,12 +1,11 @@
 .container-dashboard {
     background: #302d36bb;
     color: #fff;
-    padding: 50px!important;
+    padding: 30px!important;
     margin-top: 10px;
     border-radius: 10px;
 }
 
 .container-dashboard.fixed-panel{
-    height: 97vh;
-    overflow-y: scroll;
+    min-height: 97vh;
 }

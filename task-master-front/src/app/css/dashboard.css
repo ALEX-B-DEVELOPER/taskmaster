@@ -1,6 +1,7 @@
 section.dashboard-bg{
-    background-image: url("../assets/images/bg-task3.jpg");
+    background-image: url("../assets/images/bg-dashboard.jpg");
     background-size: cover;
+    background-attachment: fixed;
     width: 100%;
     min-height: 100vh;
 }
@@ -8,4 +9,20 @@ section.dashboard-bg{
 section.dashboard-bg a{
     color: #fff;
     font-size: 12px;
+}
+
+section.updateform{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section.updateform .container-dashboard{
+    min-width: 350px;
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

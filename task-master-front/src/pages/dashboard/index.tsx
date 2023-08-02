@@ -33,13 +33,12 @@ export default function DashboardComponent(){
                 <div className="row">
                     <div className="col-md-4">
                         <div className="container-dashboard">
-                            <h1>TASK-MASTER</h1>
+                            <h2>TASK-MASTER</h2>
                             <hr />
-                            <h4>Hi, name lastName</h4>
+                            <p>Hi, name lastName</p>
                             <a className="btn btn-outline-secondary btn-sm">EDIT PROFILE</a>{' '}
-                            <a className="btn btn-outline-danger btn-sm" onClick={logout}>LOGOUT</a>   <br /> <br />  
-                            <p>Summary:<br />5 tasks not starting <br /> 5 tasks in progress <br /> 5 tasks finished </p> 
-                        
+                            <a className="btn btn-outline-danger btn-sm" onClick={logout}>LOGOUT</a> <br /> <br />  
+                            <p>SUMMARY:<br />5 not starting | 5 in progress | 5 finished </p>                         
                         </div>
                         <CreateTask />
                     </div>

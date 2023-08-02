@@ -1,20 +1,28 @@
 import "bootstrap/dist/css/bootstrap.css"
 import "@/app/components/container-task/container-task.css"
 import Link from "next/link";
+
 import { useEffect } from "react";
 import Countdown from "@/app/components/countdown/countdown"
+import { httpDelete } from "@/app/core/http-request-contract";
+import EditTaskComponent from "@/pages/task/[id]";
+
 
 export default function ContainerTask(props: { task: any }) {
     useEffect(() => {
         require("bootstrap/dist/js/bootstrap.bundle.js");
     }, []);
 
+    const deleteTask = (id: any)=>{
+        httpDelete("tasks", id).then((response) => { console.log(response) }).catch((err) => { console.log(err) });
+    }
+
     return (
         <div className="col-md-4" >
             <div className="list-group">
-                <div className="list-group-item active text-uppercase">                                           
-                    <button type="button" className="btn btn-sm btn-outline-light btn-edit">DELETE</button>
-                    <button type="button" className="btn btn-sm btn-outline-light btn-edit">EDIT</button>                       
+                <div className="list-group-item active text-uppercase">                                 
+                    <button type="button" className="btn btn-sm btn-outline-light btn-edit" onClick={()=>{deleteTask(props.task.id)}}>DELETE</button>   
+                    <Link className="btn btn-sm btn-outline-light btn-edit" href={"/task/" + props.task.id}> Edit </Link>     
                 </div>
                 <div className="list-group-item">  
                 <h3>{props.task.title}</h3> <hr />

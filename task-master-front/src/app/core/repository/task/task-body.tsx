@@ -1,4 +1,5 @@
-export const taskModel = [{ id: 1, title: "", description: "", status: "", datetime: "", priority: "" }];
+export const taskModelSingle = { id: 1, title: "", description: "", datetime: "", priority: "", status: "" }
+export const taskModel = [taskModelSingle]
 
 export function validateTaskBody(task: typeof taskModel): String | typeof taskModel{
 
