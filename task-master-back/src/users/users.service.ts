@@ -1,15 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { Users } from './model/users.entity';
 import { InjectModel } from '@nestjs/sequelize';
 import { UserCreateDto } from './dto/user.create.dto';
 import { UserLoginDto } from './dto/user.login.dto';
 import { UserUpdateDto } from './dto/user.update.dto';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class UsersService {
     constructor(
         @InjectModel(Users)
         private readonly usersModel: typeof Users,
+        private jwtService: JwtService
     ) { }
 
     findAll(): Promise<Users[]> {
@@ -26,12 +28,19 @@ export class UsersService {
     }
 
     async queryLogin(dto: UserLoginDto): Promise<Users | any> {
-        let  user =  await this.usersModel.findOne({ where: { email: dto.email, password: dto.password }, attributes: ['name', 'lastName'] });
-        if(user === null ){
-            return {"message":"This users does not exist in our system"}
-        }else{
-            return user
+        let  user =  await this.usersModel.findOne({ 
+            where: { email: dto.email, password: dto.password }, 
+            attributes: ['name', 'email', 'id'] });
+        if(user === undefined ){
+            throw new UnauthorizedException();
         }
+        const payload = { sub: user.name, email: user.email, id: user.id };
+        return {
+            access_token: await this.jwtService.signAsync(payload),
+            name: user.name,
+            email: user.email,
+            id: user.id
+        };
     }
 
     async updateUser(_id: number, dto: UserUpdateDto): Promise<Users | any> {
