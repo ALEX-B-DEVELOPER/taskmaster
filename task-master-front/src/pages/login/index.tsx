@@ -26,6 +26,7 @@ export default function LoginComponent(){
     const validateSesion = ()=>{
         if (sessionStorage.getItem("user") !== null || undefined){
             console.log(sessionStorage.getItem("user"))
+            console.log(sessionStorage.getItem("access_token"))
             //router.push("/dashboard")
         }
     }
@@ -33,7 +34,7 @@ export default function LoginComponent(){
     const validateLogin = async () =>{
         let validation = validateLoginBody(values)
         if (typeof validation === 'string') alert (validation)
-        else httpPost("users/login", values).then((response) => {sessionStorage.setItem("user", response.name)}).catch((err)=>{console.log(err)});
+        else httpPost("users/login", values).then((response) => {sessionStorage.setItem("user", response.name); sessionStorage.setItem("access_token", response.access_token)}).catch((err)=>{console.log(err)});
         validateSesion();
     }
 
