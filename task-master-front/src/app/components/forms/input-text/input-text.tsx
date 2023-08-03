@@ -12,6 +12,6 @@ export default function InputText(props: { hint: string, type: string, id: strin
             onChange={e => {
                 setText(e.target.value)
                 props.handleInput[0](e, props.handleInput[1], props.handleInput[2])
-            }} />
+        }} />
     )
 }

@@ -52,9 +52,10 @@ export default function ContainerTask(props: { task: any }) {
                                 </div>
                                 <div className="modal-body">
                                     {props.task.id} <br />
-                                    {props.task.name} <br />
-                                    {props.task.description} <br />
-                                    {props.task.priority} <br />                                   
+                                    NOMBRE - {props.task.title} <br />
+                                    DESCRIPTION - {props.task.description} <br />
+                                    PRIORITY - {props.task.priority} <br />
+                                    STATUS - {props.task.status}                                   
                                 </div>
                             </div>
                         </div>

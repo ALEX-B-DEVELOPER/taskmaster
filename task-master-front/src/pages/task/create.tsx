@@ -4,8 +4,10 @@ import { httpPost, httpPut } from "@/app/core/http-request-contract";
 import { useEffect, useState } from "react";
 import { handleInput } from "@/app/core/repository/handle-input"
 import { taskModel, taskModelSingle, validateTaskBody } from "@/app/core/repository/task/task-body";
+import { StatusModel } from "@/app/core/repository/status/status-body";
 import router from "next/router";
 import Link from "next/link";
+import SelectList from "@/app/components/forms/select-list/select-list";
 
 
 export default function CreateTaskComponent(props: { task?: typeof taskModelSingle }) {
@@ -25,7 +27,7 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
 
     const updateTask = () => {
         httpPut("tasks", values, props.task?.id + '').then((response) => {
-            console.log(response);            
+        console.log(response);            
         }).catch((error) => {
             console.log(error)
         })
@@ -47,7 +49,7 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
         <form>
         <InputText hint="Title" id="title" value={props.task?.title} type="text" handleInput={[handleInput, values, setValues]} />
         <InputText hint="Date" id="datetime" value={setDate(props.task?.datetime)} type="date" handleInput={[handleInput, values, setValues]} />
-        <InputText hint="Priority" id="priority" value={props.task?.priority} type="number" handleInput={[handleInput, values, setValues]} />
+        <InputText hint="Priority" id="priority" value={props.task?.priority} type="number" handleInput={[handleInput, values, setValues]} />       
         <InputText hint="Status" id="status" value={props.task?.status} type="number" handleInput={[handleInput, values, setValues]} />
         <InputText hint="Description" id="description" value={props.task?.description} type="textarea" handleInput={[handleInput, values, setValues]} />
         {
