@@ -3,6 +3,7 @@ import { Users } from './model/users.entity';
 import { InjectModel } from '@nestjs/sequelize';
 import { UserCreateDto } from './dto/user.create.dto';
 import { UserLoginDto } from './dto/user.login.dto';
+import { UserUpdateDto } from './dto/user.update.dto';
 
 @Injectable()
 export class UsersService {
@@ -31,6 +32,28 @@ export class UsersService {
         }else{
             return user
         }
+    }
+
+    async updateUser(_id: number, dto: UserUpdateDto): Promise<Users | any> {
+        return await this.usersModel.update(
+            {
+                name: dto.name,
+                lastName: dto.lastName,
+                email: dto.email
+            }, {
+            where: { id: _id }
+        }
+        ).then((response) => response).catch((error) => { return { "message_error": "NOT UPDATE TASK" } });
+    }
+
+    async getUserForId(_id: number): Promise<Users> {
+        return await this.usersModel.findOne(
+            {
+                where: {
+                    id: _id
+                }
+            }
+        )
     }
 
 }

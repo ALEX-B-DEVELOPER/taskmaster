@@ -8,6 +8,7 @@ import CreateTask from "@/pages/task/create"
 import { taskModel } from "@/app/core/repository/task/task-body"
 import ContainerTask from "@/app/components/container-task/container-task"
 import router from "next/router"
+import Link from "next/link"
 
 
 export default function DashboardComponent(){
@@ -36,6 +37,7 @@ export default function DashboardComponent(){
                             <h2>TASK-MASTER</h2>
                             <hr />
                             <p>Hi, name lastName</p>
+                            <Link className="btn btn-sm btn-outline-light btn-edit" href={"/user/" + 1}> Edit </Link>     
                             <a className="btn btn-outline-secondary btn-sm">EDIT PROFILE</a>{' '}
                             <a className="btn btn-outline-danger btn-sm" onClick={logout}>LOGOUT</a> <br /> <br />  
                             <p>SUMMARY:<br />5 not starting | 5 in progress | 5 finished </p>                         
