@@ -14,6 +14,7 @@ export default function ContainerTask(props: { task: any }) {
     }, []);
 
     const deleteTask = (id: any)=>{
+        alert("Está seguro que desea eliminar la tarea?");
         httpDelete("tasks", id).then((response) => { console.log(response) }).catch((err) => { console.log(err) });
     }
 
@@ -21,7 +22,7 @@ export default function ContainerTask(props: { task: any }) {
         <div className="col-md-4" >
             <div className="list-group">
                 <div className="list-group-item active text-uppercase">                                 
-                    <button type="button" className="btn btn-sm btn-outline-light btn-edit" onClick={()=>{deleteTask(props.task.id)}}>DELETE</button>   
+                    <Link className="btn btn-sm btn-outline-danger btn-edit" href={""} onClick={()=>{deleteTask(props.task.id)}}>DELETE</Link>   
                     <Link className="btn btn-sm btn-outline-light btn-edit" href={"/task/" + props.task.id}> Edit </Link>     
                 </div>
                 <div className="list-group-item">  

@@ -27,10 +27,9 @@ export class TasksController {
     async updateTask(@Param() params: any, @Body() dto: TaskUpdateDto): Promise<Tasks> {
         return await this.service.updateTask(params.id , dto)
     }
-/*
+
     @Delete("/:id")
     async DeleteTask(@Param() params: any): Promise<Tasks> {
         return await this.service.deleteTask(params.id)
     }
-*/
 }

@@ -13,3 +13,11 @@ h1, h2, h3, h4 {
   background-color: #302d36!important;
   border-color: #302d36!important;
 }
+
+.btn-outline-light {
+  border-color: #f8f9fa40!important;
+}
+
+.btn-outline-danger {
+  border-color: #dc35458c!important;
+}

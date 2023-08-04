@@ -20,5 +20,5 @@ export const httpPut = async (endpoint: string, json: any, id: string): Promise<
 }
 
 export const httpDelete = async (endpoint: string, id: any): Promise <any | any> => {
-    return await axios.delete(url + '/' + endpoint, id).then((response) => response.data).then ((data)=> data).catch((err)=> err);
+    return await axios.delete(url + '/' + endpoint + '/' + id).then((response) => response.data).then ((data)=> data).catch((err)=> err);
 }

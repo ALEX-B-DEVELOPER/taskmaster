@@ -1,6 +1,7 @@
 .btn-edit{
     float: right; 
     margin-left: 3px;
+    width: 59px;
 }
 
 .list-group-item.active{

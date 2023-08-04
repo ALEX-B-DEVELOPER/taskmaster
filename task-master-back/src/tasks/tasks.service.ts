@@ -24,6 +24,16 @@ export class TasksService {
         )
     }
 
+    async deleteTask(_id: number): Promise<Tasks | any>{
+        return await this.taskModel.destroy(
+            {
+                where: {
+                    id: _id
+                }
+            }
+        )
+    }
+
     async createTask(dto: TaskCreateDto): Promise<Tasks | any> {
         return await this.taskModel.create({
             title: dto.title,

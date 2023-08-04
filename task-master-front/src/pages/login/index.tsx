@@ -27,7 +27,7 @@ export default function LoginComponent(){
         if (sessionStorage.getItem("user") !== null || undefined){
             console.log(sessionStorage.getItem("user"))
             console.log(sessionStorage.getItem("access_token"))
-            //router.push("/dashboard")
+            router.push("/dashboard")
         }
     }
 

@@ -28,6 +28,12 @@ export default function DashboardComponent(){
         router.push("/")
     }
 
+ /*   let username;
+        try{
+            if(sessionStorage.getItem("user")?.toString() !== null){
+            username = sessionStorage.getItem("user")?.toString()}
+        }catch (err) {console.log(err)}
+*/
     return(
         <section className="dashboard-bg">
             <div className="container">
@@ -36,10 +42,11 @@ export default function DashboardComponent(){
                         <div className="container-dashboard">
                             <h2>TASK-MASTER</h2>
                             <hr />
-                            <p>Hi, name lastName</p>
-                            <Link className="btn btn-sm btn-outline-light btn-edit" href={"/user/" + 1}> Edit </Link>     
-                            <a className="btn btn-outline-secondary btn-sm">EDIT PROFILE</a>{' '}
-                            <a className="btn btn-outline-danger btn-sm" onClick={logout}>LOGOUT</a> <br /> <br />  
+                            <p>HELLO USER 
+                            <br />
+                            email@email.com</p>
+                            <Link className="btn btn-sm btn-outline-light" href={"/user/" + 1}> EDIT PROFILE </Link> {' '}    
+                            <Link className="btn btn-outline-danger btn-sm" href={""} onClick={logout}>LOGOUT</Link> <br /> <br />  
                             <p>SUMMARY:<br />5 not starting | 5 in progress | 5 finished </p>                         
                         </div>
                         <CreateTask />
