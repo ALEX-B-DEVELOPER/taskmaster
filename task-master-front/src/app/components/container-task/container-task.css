@@ -9,3 +9,16 @@
     background-color: #302d36;
     border-color: #302d36!important;
 }
+
+.task-sheet{
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.5s;
+}
+
+.task-sheet:hover{
+    opacity: 1;
+    box-shadow: 0 5px 10px #282828;
+}

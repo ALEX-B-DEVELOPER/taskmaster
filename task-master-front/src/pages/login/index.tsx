@@ -55,7 +55,6 @@ export default function LoginComponent(){
                         <br />
                         <Link href={"/reset"}>Forgot your password? Click here</Link>
                         </form>
-
                 </div>
             </div>
         </section>

@@ -10,8 +10,12 @@ h1, h2, h3, h4 {
 }
 
 .btn-primary{
-  background-color: #302d36!important;
-  border-color: #302d36!important;
+  background-color: #254152!important;
+  border-color: #254152!important;
+}
+
+.btn-primary:hover {
+  background-color: #142530!important;
 }
 
 .btn-outline-light {
@@ -20,4 +24,14 @@ h1, h2, h3, h4 {
 
 .btn-outline-danger {
   border-color: #dc35458c!important;
+}
+
+.modal-content{
+  color: #254152!important;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-body{
+  padding: 40px!important;
 }
