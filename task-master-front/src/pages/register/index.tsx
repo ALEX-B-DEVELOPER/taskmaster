@@ -19,8 +19,6 @@ export default function RegisterComponent(){
     const router = useRouter();
     const [values, setValues] = useState(registerBody)
 
-    //router.push("/login")
-
     const validateRegister = async () =>{
         let validation = validateRegisterBody(values)
         if (typeof validation === 'string') alert (validation)

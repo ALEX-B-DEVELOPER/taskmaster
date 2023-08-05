@@ -10,7 +10,6 @@ import ContainerTask from "@/app/components/container-task/container-task"
 import router from "next/router"
 import Link from "next/link"
 
-
 export default function DashboardComponent(){
 
     const [tasks, setTask] = useState(taskModel)
@@ -18,7 +17,7 @@ export default function DashboardComponent(){
     React.useEffect(() => {
         httpGet("tasks").then((data) => { setTask(data)}).catch((error) => console.log(error))
     }, [])
-
+    
     const results = tasks.map((task) =>
         <ContainerTask key={task.id} task={task} />
     );
@@ -28,12 +27,8 @@ export default function DashboardComponent(){
         router.push("/")
     }
 
- /*   let username;
-        try{
-            if(sessionStorage.getItem("user")?.toString() !== null){
-            username = sessionStorage.getItem("user")?.toString()}
-        }catch (err) {console.log(err)}
-*/
+    //const username = sessionStorage.getItem("user");
+
     return(
         <section className="dashboard-bg">
             <div className="container">
@@ -42,7 +37,7 @@ export default function DashboardComponent(){
                         <div className="container-dashboard">
                             <h2>TASK-MASTER</h2>
                             <hr />
-                            <p>HELLO USER 
+                            <p>HELLO USER: { }
                             <br />
                             email@email.com</p>
                             <Link className="btn btn-sm btn-outline-light" href={"/user/" + 1}> EDIT PROFILE </Link> {' '}    

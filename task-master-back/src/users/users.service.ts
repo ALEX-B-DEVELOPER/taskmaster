@@ -6,6 +6,8 @@ import { UserLoginDto } from './dto/user.login.dto';
 import { UserUpdateDto } from './dto/user.update.dto';
 import { JwtService } from '@nestjs/jwt';
 
+const md5 = require('md5');
+
 @Injectable()
 export class UsersService {
     constructor(
@@ -23,13 +25,13 @@ export class UsersService {
             name: dto.name,
             lastName: dto.lastName,
             email: dto.email,
-            password: dto.password
+            password: md5(dto.password)
         }).then((response) => response).catch((error) => error);
     }
 
     async queryLogin(dto: UserLoginDto): Promise<Users | any> {
         let  user =  await this.usersModel.findOne({ 
-            where: { email: dto.email, password: dto.password }, 
+            where: { email: dto.email, password: md5(dto.password) }, 
             attributes: ['name', 'email', 'id'] });
         if(user === undefined ){
             throw new UnauthorizedException();
@@ -56,7 +58,7 @@ export class UsersService {
     }
 
     async getUserForId(_id: number): Promise<Users> {
-        return await this.usersModel.findOne(
+        return await this.usersModel.findOne( 
             {
                 where: {
                     id: _id

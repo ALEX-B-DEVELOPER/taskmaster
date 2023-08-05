@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { httpDelete } from "@/app/core/http-request-contract";
 import Countdown from "@/app/components/countdown/countdown"
+import { setDate } from "@/app/core/functions";
 
 
 
@@ -26,7 +27,7 @@ export default function ContainerTask(props: { task: any }) {
                 </div>
                 <div className="task-sheet list-group-item" data-bs-toggle="modal" data-bs-target={"#task" + props.task.id}>  
                 <h3>{props.task.title}</h3> <hr />
-                   <p> DUE DATE: {props.task.datetime}</p>                          
+                   <p> DUE DATE: <br />{setDate(props.task.datetime)}</p>                          
                 </div>                
                 <div className="d-flex justify-content-center align-items-center">
                     <div

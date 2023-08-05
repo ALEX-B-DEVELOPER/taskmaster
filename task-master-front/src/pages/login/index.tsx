@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation"
 import {loginBody, validateLoginBody} from "@/app/core/repository/login/login-body" 
 import { httpPost } from "@/app/core/http-request-contract"
 import { handleInput } from "@/app/core/repository/handle-input"
-
+import Swal from 'sweetalert2'
 
 
 export default function LoginComponent(){
@@ -24,10 +24,10 @@ export default function LoginComponent(){
     },[])
 
     const validateSesion = ()=>{
-        if (sessionStorage.getItem("user") !== null || undefined){
+        if (sessionStorage.getItem("user") !== (null || undefined)){
             console.log(sessionStorage.getItem("user"))
             console.log(sessionStorage.getItem("access_token"))
-            router.push("/dashboard")
+            //router.push("/dashboard")
         }
     }
 

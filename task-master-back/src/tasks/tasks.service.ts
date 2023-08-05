@@ -4,8 +4,6 @@ import { Tasks } from './model/task.entity';
 import { TaskCreateDto } from './dto/task.create.dto';
 import { TaskUpdateDto } from './dto/task.update.dto';
 
-
-
 @Injectable()
 export class TasksService {
     constructor(@InjectModel(Tasks) private readonly taskModel: typeof Tasks) { }
