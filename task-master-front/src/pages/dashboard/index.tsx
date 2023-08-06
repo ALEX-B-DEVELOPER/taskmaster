@@ -23,7 +23,7 @@ export default function DashboardComponent(){
     );
 
     const logout = async () => {
-        sessionStorage.clear()
+        //sessionStorage.clear()
         router.push("/")
     }
 

@@ -28,12 +28,13 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
     }
 
     const updateTask = () => {
+        console.log(values);
         httpPut("tasks", values, props.task?.id + '').then((response) => {
-        console.log(response);            
+        //console.log(response);            
         }).catch((error) => {
             console.log(error)
         })
-        router.push("/dashboard")
+        //router.push("/dashboard")
     }
 
     return (
@@ -47,7 +48,6 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
         {props.task?.id != null ? (
         <SelectList list={StatusModel} id="status" value={props.task?.status} handleInput={[handleSelect, values, setValues]}/>) 
         : (<SelectList list={StatusModel} id="status" handleInput={[handleSelect, values, setValues]}/>)}
-
 
         <InputText hint="Description" id="description" value={props.task?.description} type="textarea" handleInput={[handleInput, values, setValues]} />
         {
