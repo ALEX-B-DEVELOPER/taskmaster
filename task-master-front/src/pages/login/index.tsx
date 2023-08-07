@@ -1,3 +1,4 @@
+'use client'
 import "@/app/globals.css"
 import "@/app/css/login.css"
 import "@/app/css/container-login.css"
@@ -24,19 +25,26 @@ export default function LoginComponent(){
     },[])
 
     const validateSesion = ()=>{
-        if (sessionStorage.getItem("user") != undefined){
-            console.log(sessionStorage.getItem("user"))
-            console.log(sessionStorage.getItem("access_token"))
+        if (sessionStorage.getItem("user") != null){
             router.push("/dashboard")
+        }else {
+            router.push("/login")
         }
     }
 
     const validateLogin = async () =>{
         let validation = validateLoginBody(values)
         if (typeof validation === 'string') alert (validation)
-        else httpPost("users/login", values).then((response) => {
-            if(response.name != null || response.name != undefined)
-            sessionStorage.setItem("user", response.name); sessionStorage.setItem("access_token", response.access_token)}).catch((err)=>{console.log(err)});
+        else await httpPost("users/login", values).then((response) => {
+            if(response.name != null || response.name != undefined){
+                sessionStorage.setItem("user", response.name); 
+                sessionStorage.setItem("id", response.id); 
+                sessionStorage.setItem("email", response.email);
+                sessionStorage.setItem("access_token", response.access_token)
+            }            
+            else alert("Wrong data, please try again");
+        })
+        .catch((err)=>{console.log(err)});
         validateSesion();
     }
 

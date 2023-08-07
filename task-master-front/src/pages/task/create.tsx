@@ -10,6 +10,7 @@ import { StatusModel } from "@/app/core/repository/status/status-body";
 import SelectList from "@/app/components/forms/select-list/select-list";
 import { setDate } from "@/app/core/functions";
 import { handleSelect } from "@/app/core/repository/handle-select";
+import { Last } from "react-bootstrap/esm/PageItem";
 
 
 export default function CreateTaskComponent(props: { task?: typeof taskModelSingle }) {
@@ -23,18 +24,12 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
 
     const createTask = () => {
         let validation = validateTaskBody(values)
-        if (typeof validation === 'string') alert (validation)
-        else httpPost("tasks", values).then((response) => {console.log(response);}).catch((error) => {console.log(error)})
+        if (typeof validation === 'string' ) alert (validation)
+        else httpPost("tasks", values).then((response) => {router.push("/dashboard");}).catch((error) => {console.log(error)})
     }
 
     const updateTask = () => {
-        console.log(values);
-        httpPut("tasks", values, props.task?.id + '').then((response) => {
-        //console.log(response);            
-        }).catch((error) => {
-            console.log(error)
-        })
-        //router.push("/dashboard")
+        httpPut("tasks", values, props.task?.id + '').then((response) => {router.push("/dashboard");}).catch((error) => {console.log(error)})
     }
 
     return (

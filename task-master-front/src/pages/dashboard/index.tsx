@@ -1,3 +1,4 @@
+'use client'
 import "@/app/globals.css"
 import "@/app/css/dashboard.css"
 import "@/app/css/container-dashboard.css"
@@ -15,19 +16,35 @@ export default function DashboardComponent(){
     const [tasks, setTask] = useState(taskModel)
 
     React.useEffect(() => {
-        httpGet("tasks").then((data) => { setTask(data)}).catch((error) => console.log(error))
+        httpGet("tasks").then((data) => { setTask(data)}).catch((error) => console.log(error));
     }, [])
-    
-    const results = tasks.map((task) =>
+
+
+    const [isClient, setIsClient] = useState(false)
+       
+    React.useEffect(() => {
+          setIsClient(true)
+        }, [])
+
+        const results = tasks.map((task) =>
         <ContainerTask key={task.id} task={task} />
-    );
+        );
+    
 
     const logout = async () => {
-        //sessionStorage.clear()
+        sessionStorage.clear()
         router.push("/")
     }
 
-    //const username = sessionStorage.getItem("user");
+    let user, email, id;
+    if(typeof window !== 'undefined'){
+        if (isClient){
+            user = sessionStorage.getItem("user");
+            email = sessionStorage.getItem("email");
+            id = sessionStorage.getItem("id");
+        }
+    }
+    
 
     return(
         <section className="dashboard-bg">
@@ -37,10 +54,10 @@ export default function DashboardComponent(){
                         <div className="container-dashboard">
                             <h2>TASK-MASTER</h2>
                             <hr />
-                            <p>HELLO USER: { }
+                            <p>HELLO USER: {user}
                             <br />
-                            email@email.com</p>
-                            <Link className="btn btn-sm btn-outline-light" href={"/user/" + 1}> EDIT PROFILE </Link> {' '}    
+                            {email}</p>
+                            <Link className="btn btn-sm btn-outline-light" href={"/user/" + id}> EDIT PROFILE </Link> {' '}    
                             <Link className="btn btn-outline-danger btn-sm" href={""} onClick={logout}>LOGOUT</Link> <br /> <br />  
                             <p>SUMMARY:<br />5 not starting | 5 in progress | 5 finished </p>                         
                         </div>
