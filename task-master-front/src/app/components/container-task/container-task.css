@@ -22,3 +22,33 @@
     opacity: 1;
     box-shadow: 0 5px 10px #282828;
 }
+
+.statuslabel div{
+    width: 60px;
+    margin: 0 auto;
+}
+
+.statuslabel.notstated{
+    color:red;
+}
+
+.statuslabel.inprogress{
+    color:rgb(18, 120, 128);
+}
+
+.statuslabel.completed{
+    color:rgb(30, 145, 57);
+}
+
+.datelabel {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.datelabelpopup {
+    background: #959595;
+    color: #fff;
+    display: inline-flex;
+    padding: 10px;
+    border-radius: 10px;
+}

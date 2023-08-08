@@ -10,10 +10,10 @@ import { StatusModel } from "@/app/core/repository/status/status-body";
 import SelectList from "@/app/components/forms/select-list/select-list";
 import { setDate } from "@/app/core/functions";
 import { handleSelect } from "@/app/core/repository/handle-select";
-import { Last } from "react-bootstrap/esm/PageItem";
 
 
 export default function CreateTaskComponent(props: { task?: typeof taskModelSingle }) {
+
     const [values, setValues] = useState(taskModel)
 
     useEffect(() => {
@@ -25,7 +25,7 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
     const createTask = () => {
         let validation = validateTaskBody(values)
         if (typeof validation === 'string' ) alert (validation)
-        else httpPost("tasks", values).then((response) => {router.push("/dashboard");}).catch((error) => {console.log(error)})
+        else httpPost("tasks", values).then((response) => {router.reload();}).catch((error) => {console.log(error)})
     }
 
     const updateTask = () => {
@@ -49,8 +49,7 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
             props.task?.id != null ? (
             <div className="flex-center updateform">
             <Link className="form-control btn btn-outline-light mt-3" href={"/dashboard"}> Cancel </Link>     
-            <ButtonPrimary text="Update" callBack={() => { updateTask() }} />
-            </div>            
+            <ButtonPrimary text="Update" callBack={() => { updateTask() }} /></div>            
             ) : (<ButtonPrimary text="Create Task" callBack={() => { createTask() }} />)
         }
         </form>

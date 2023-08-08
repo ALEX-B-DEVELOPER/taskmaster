@@ -3,10 +3,12 @@ import "@/app/components/container-task/container-task.css"
 import Link from "next/link";
 import { useEffect } from "react";
 import { httpDelete } from "@/app/core/http-request-contract";
-import Countdown from "@/app/components/countdown/countdown"
 import { setDate } from "@/app/core/functions";
-
-
+import router from "next/router";
+import animationNotStarted from "@/app/assets/images/not-started.json"
+import animationInProgress from "@/app/assets/images/in-progress.json"
+import animationCompleted from "@/app/assets/images/finished.json"
+import Lottie from "lottie-react";
 
 export default function ContainerTask(props: { task: any }) {
     useEffect(() => {
@@ -15,7 +17,17 @@ export default function ContainerTask(props: { task: any }) {
 
     const deleteTask = (id: any)=>{
         alert("Está seguro que desea eliminar la tarea?");
-        httpDelete("tasks", id).then((response) => { console.log(response) }).catch((err) => { console.log(err) });
+        httpDelete("tasks", id).then((response) => { router.reload() }).catch((err) => { console.log(err) });
+    }
+
+    const status = () =>{
+            if (props.task.status == 0 )
+                return <div className="statuslabel notstated">NOT STARTED<Lottie animationData={animationNotStarted} loop={false}/></div>
+            else if (props.task.status == 1)
+                return <div className="statuslabel inprogress">IN PROGRESS<Lottie animationData={animationInProgress} loop={true}/> </div> 
+            else if (props.task.status == 2)
+                return <div className="statuslabel completed">COMPLETED<Lottie animationData={animationCompleted} loop={true}/> </div>
+            else return ''
     }
 
     return (
@@ -26,8 +38,9 @@ export default function ContainerTask(props: { task: any }) {
                     <Link className="btn btn-sm btn-outline-light btn-edit" href={"/task/" + props.task.id}> Edit </Link>     
                 </div>
                 <div className="task-sheet list-group-item" data-bs-toggle="modal" data-bs-target={"#task" + props.task.id}>  
-                <h3>{props.task.title}</h3> <hr />
-                   <p> DUE DATE: <br />{setDate(props.task.datetime)}</p>                          
+                <h3>{props.task.title}</h3> <hr />   
+                {status()}    
+                <br /><p className="datelabel"> DUE DATE: {setDate(props.task.datetime)}</p>                  
                 </div>                
                 <div className="d-flex justify-content-center align-items-center">
                     <div
@@ -39,7 +52,7 @@ export default function ContainerTask(props: { task: any }) {
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h5 className="modal-title text-uppercase" id="taskLabel">
-                                        {props.task.title}
+                                    TASK DETAILS:
                                     </h5>                                                                 
                                     <button
                                         type="button"
@@ -49,10 +62,11 @@ export default function ContainerTask(props: { task: any }) {
                                     ></button>
                                 </div>
                                 <div className="modal-body">
-                                    <p>DUE DATE: <br />{props.task.datetime} </p>
-                                    <p>TASK NAME: <br />{props.task.title} </p>
-                                    <p>DESCRIPTION: <br />{props.task.description} </p>
-                                    <p>PRIORITY: {props.task.priority} - STATUS: {props.task.status} </p>                                  
+                                    <h1>{props.task.title}</h1><br />
+                                    {status()} <br />
+                                    <p className="datelabelpopup">DUE DATE: <br />{setDate(props.task.datetime)} </p>
+                                    <p>PRIORITY: {props.task.priority} </p>                                     
+                                    <p>DESCRIPTION: <br />{props.task.description} </p>                         
                                 </div>
                             </div>
                         </div>
