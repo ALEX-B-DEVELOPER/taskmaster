@@ -26,15 +26,16 @@ export default function LoginComponent(){
 
     const validateSesion = ()=>{
         if (sessionStorage.getItem("user") != null){
+            Swal.fire({position:'top-end', icon:'success', title:'SUCCESS LOGIN </br> WELCOME BACK!', showConfirmButton:false, timer: 1500 })
             router.push("/dashboard")
         }else {
-            router.push("/login")
+            router.push("/")
         }
     }
 
     const validateLogin = async () =>{
         let validation = validateLoginBody(values)
-        if (typeof validation === 'string') alert (validation)
+        if (typeof validation === 'string') Swal.fire({ icon:'error', title: validation , text:'PLEASE COMPLETE ALL REQUIRED FIELDS', footer: 'TASKMASTER', confirmButtonColor: '#254152'})
         else await httpPost("users/login", values).then((response) => {
             if(response.name != null || response.name != undefined){
                 sessionStorage.setItem("user", response.name); 
@@ -42,7 +43,7 @@ export default function LoginComponent(){
                 sessionStorage.setItem("email", response.email);
                 sessionStorage.setItem("access_token", response.access_token)
             }            
-            else alert("Wrong data, please try again");
+            else Swal.fire({ icon:'error', title:'Wrong login data', text:'PLEASE TRY AGAIN', footer: 'TASKMASTER', confirmButtonColor: '#254152'})
         })
         .catch((err)=>{console.log(err)});
         validateSesion();

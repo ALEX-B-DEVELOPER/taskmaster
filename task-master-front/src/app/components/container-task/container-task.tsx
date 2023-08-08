@@ -2,13 +2,14 @@ import "bootstrap/dist/css/bootstrap.css"
 import "@/app/components/container-task/container-task.css"
 import Link from "next/link";
 import { useEffect } from "react";
-import { httpDelete } from "@/app/core/http-request-contract";
+import { httpDelete, httpGet } from "@/app/core/http-request-contract";
 import { setDate } from "@/app/core/functions";
 import router from "next/router";
 import animationNotStarted from "@/app/assets/images/not-started.json"
 import animationInProgress from "@/app/assets/images/in-progress.json"
 import animationCompleted from "@/app/assets/images/finished.json"
 import Lottie from "lottie-react";
+import Swal from "sweetalert2";
 
 export default function ContainerTask(props: { task: any }) {
     useEffect(() => {
@@ -16,8 +17,22 @@ export default function ContainerTask(props: { task: any }) {
     }, []);
 
     const deleteTask = (id: any)=>{
-        alert("Está seguro que desea eliminar la tarea?");
-        httpDelete("tasks", id).then((response) => { router.reload() }).catch((err) => { console.log(err) });
+        Swal.fire({
+            title: 'Do you want to delete this task?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#254152',
+            cancelButtonColor: '#616161',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                httpDelete("tasks", id).then(() => { 
+                    Swal.fire({title:'Deleted!',text:'Your Task has been deleted.',icon:'success', showConfirmButton:false})
+                    router.reload() 
+                }).catch((err) => { console.log(err) });
+            }
+          })
     }
 
     const status = () =>{

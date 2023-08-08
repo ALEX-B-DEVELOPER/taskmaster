@@ -37,5 +37,4 @@ export default function UserPanel(){
             <p>SUMMARY:<br />5 not starting | 5 in progress | 5 finished </p>                         
     </div>
     )
-
 }

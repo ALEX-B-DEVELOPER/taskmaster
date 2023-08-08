@@ -10,6 +10,7 @@ import { StatusModel } from "@/app/core/repository/status/status-body";
 import SelectList from "@/app/components/forms/select-list/select-list";
 import { setDate } from "@/app/core/functions";
 import { handleSelect } from "@/app/core/repository/handle-select";
+import Swal from "sweetalert2";
 
 
 export default function CreateTaskComponent(props: { task?: typeof taskModelSingle }) {
@@ -24,8 +25,12 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
 
     const createTask = () => {
         let validation = validateTaskBody(values)
-        if (typeof validation === 'string' ) alert (validation)
-        else httpPost("tasks", values).then((response) => {router.reload();}).catch((error) => {console.log(error)})
+        if (typeof validation === 'string' ) 
+            Swal.fire({ icon:'error', title: validation , text:'PLEASE COMPLETE ALL REQUIRED FIELDS', footer: 'TASKMASTER', confirmButtonColor: '#254152'})
+        else httpPost("tasks", values).then((response) => {
+            Swal.fire({position:'top-end', icon:'success', title:'TASK CREATED SUCCESSFULY', showConfirmButton:false, timer: 1500 });
+            router.reload();
+        }).catch((error) => {console.log(error)})
     }
 
     const updateTask = () => {

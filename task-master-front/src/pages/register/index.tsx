@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation"
 import { httpPost } from "@/app/core/http-request-contract"
 import { handleInput } from "@/app/core/repository/handle-input"
 import { registerBody, validateRegisterBody } from "@/app/core/repository/register/register-body"
+import Swal from "sweetalert2"
 
 
 
@@ -21,8 +22,12 @@ export default function RegisterComponent(){
 
     const validateRegister = async () =>{
         let validation = validateRegisterBody(values)
-        if (typeof validation === 'string') alert (validation)
-        else httpPost("users", values).then((response) => { console.log(response) }).catch((err) => { console.log(err) });
+        if (typeof validation === 'string') Swal.fire({ icon:'error', title: validation , text:'PLEASE COMPLETE ALL REQUIRED FIELDS', footer: 'TASKMASTER', confirmButtonColor: '#254152'})
+        else httpPost("users", values).then(() => { 
+            Swal.fire({position:'top-end', icon:'success', title:'USER CREATED SUCCESSFULY</br> Please login with your new information', showConfirmButton:false, timer: 1500 });
+            router.push("/")
+        })
+            .catch((err) => { console.log(err) });
     }
 
     return(
