@@ -28,8 +28,6 @@ export default function LoginComponent(){
         if (sessionStorage.getItem("user") != null){
             Swal.fire({position:'top-end', icon:'success', title:'SUCCESS LOGIN </br> WELCOME BACK!', showConfirmButton:false, timer: 1500 })
             router.push("/dashboard")
-        }else {
-            router.push("/")
         }
     }
 

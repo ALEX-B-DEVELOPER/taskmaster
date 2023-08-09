@@ -6,9 +6,21 @@ import "bootstrap/dist/css/bootstrap.css"
 import CreateTask from "@/pages/task/create"
 import UserPanel from "../user/user.panel"
 import TaskList from "../task/list"
+import React from "react"
+import router from "next/router"
 
 export default function DashboardComponent(){
 
+   React.useEffect(()=>{
+    validateSesion();
+
+    },[])
+
+    const validateSesion = ()=>{
+        if (sessionStorage.getItem("user") == null)
+            router.push("/")
+    }
+    
     return(
         <section className="dashboard-bg">
             <div className="container">

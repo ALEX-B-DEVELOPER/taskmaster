@@ -1,6 +1,10 @@
+
+import "bootstrap/dist/css/bootstrap.css"
 import Link from "next/link";
 import router from "next/router"
 import React, { useState } from "react";
+import Image from "next/image";
+import UserImg from "@/app/assets/images/profile.png";
 
 
 export default function UserPanel(){
@@ -29,12 +33,13 @@ export default function UserPanel(){
         <div className="container-dashboard">
             <h2>TASK-MASTER</h2>
             <hr />
-            <h5 className="font-weight-bold">HELLO USER: {user}
-            <br />
-            {email}</h5>
+            <div>
+                <Image className="float-start me-3" src={UserImg} alt="User" width={80} />
+                <h5 className="font-weight-bold">HELLO USER: {user}<br />{email}</h5>
+            
             <Link className="btn btn-sm btn-outline-light" href={"/user/" + id}> EDIT PROFILE </Link> {' '}    
-            <Link className="btn btn-outline-danger btn-sm" href={""} onClick={logout}>LOGOUT</Link> <br /> <br />  
-            <p>SUMMARY:<br />5 not starting | 5 in progress | 5 finished </p>                         
+            <Link className="btn btn-outline-danger btn-sm" href={""} onClick={logout}>LOGOUT</Link> <br />                        
+            </div>
     </div>
     )
 }

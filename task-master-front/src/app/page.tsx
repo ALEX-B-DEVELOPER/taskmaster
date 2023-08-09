@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Login from '@/pages/login'
 import Register from '@/pages/register';
@@ -10,6 +10,7 @@ import DashboardComponent from '@/pages/dashboard';
 
 export default function App() {
   return (
+
     <BrowserRouter>
       <Routes>
         <Route index element={<Login/>} />      
@@ -18,5 +19,6 @@ export default function App() {
         <Route path="/dashboard" element={<DashboardComponent/>}/>
       </Routes>
     </BrowserRouter>
+
   )
 }
