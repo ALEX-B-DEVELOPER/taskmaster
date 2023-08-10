@@ -38,7 +38,8 @@ export class TasksService {
             description: dto.description,
             priority: dto.priority,
             status: dto.status,
-            datetime: dto.datetime
+            datetime: dto.datetime,
+            userId: dto.userId
         }).then((response) => response).catch((error) => {  return { "message_error": "exist title task" } });
     }
 

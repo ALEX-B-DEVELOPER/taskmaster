@@ -5,7 +5,7 @@ import "@/app/css/container-login.css"
 import "bootstrap/dist/css/bootstrap.css"
 import InputText from "@/app/components/forms/input-text/input-text"
 import ButtonPrimary from "@/app/components/forms/button-primary/button-primary"
-import React from "react"
+import React, { useContext } from "react"
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -13,6 +13,7 @@ import {loginBody, validateLoginBody} from "@/app/core/repository/login/login-bo
 import { httpPost } from "@/app/core/http-request-contract"
 import { handleInput } from "@/app/core/repository/handle-input"
 import Swal from 'sweetalert2'
+
 
 
 export default function LoginComponent(){
@@ -25,7 +26,7 @@ export default function LoginComponent(){
     },[])
 
     const validateSesion = ()=>{
-        if (sessionStorage.getItem("user") != null){
+        if (localStorage.getItem("user") != null){
             Swal.fire({position:'top-end', icon:'success', title:'SUCCESS LOGIN </br> WELCOME BACK!', showConfirmButton:false, timer: 1500 })
             router.push("/dashboard")
         }
@@ -36,10 +37,10 @@ export default function LoginComponent(){
         if (typeof validation === 'string') Swal.fire({ icon:'error', title: validation , text:'PLEASE COMPLETE ALL REQUIRED FIELDS', footer: 'TASKMASTER', confirmButtonColor: '#254152'})
         else await httpPost("users/login", values).then((response) => {
             if(response.name != null || response.name != undefined){
-                sessionStorage.setItem("user", response.name); 
-                sessionStorage.setItem("id", response.id); 
-                sessionStorage.setItem("email", response.email);
-                sessionStorage.setItem("access_token", response.access_token)
+                localStorage.setItem("user", response.name); 
+                localStorage.setItem("id", response.id); 
+                localStorage.setItem("email", response.email);
+                localStorage.setItem("access_token", response.access_token)
             }            
             else Swal.fire({ icon:'error', title:'Wrong login data', text:'PLEASE TRY AGAIN', footer: 'TASKMASTER', confirmButtonColor: '#254152'})
         })

@@ -4,4 +4,5 @@ export class TaskUpdateDto {
     priority: string
     status: string
     description: string
+    userId: string
 }

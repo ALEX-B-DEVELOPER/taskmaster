@@ -17,7 +17,7 @@ export default function DashboardComponent(){
     },[])
 
     const validateSesion = ()=>{
-        if (sessionStorage.getItem("user") == null)
+        if (localStorage.getItem("user") == null)
             router.push("/")
     }
     

@@ -4,4 +4,5 @@ export class TaskCreateDto{
     priority: string
     status: string
     description: string
+    userId: string
 }

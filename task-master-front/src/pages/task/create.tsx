@@ -1,3 +1,5 @@
+import "@/app/globals.css"
+import "bootstrap/dist/css/bootstrap.css"
 import ButtonPrimary from "@/app/components/forms/button-primary/button-primary";
 import InputText from "@/app/components/forms/input-text/input-text";
 import { httpPost, httpPut } from "@/app/core/http-request-contract";
@@ -11,11 +13,13 @@ import SelectList from "@/app/components/forms/select-list/select-list";
 import { setDate } from "@/app/core/functions";
 import { handleSelect } from "@/app/core/repository/handle-select";
 import Swal from "sweetalert2";
+import React from "react";
 
 
 export default function CreateTaskComponent(props: { task?: typeof taskModelSingle }) {
 
     const [values, setValues] = useState(taskModel)
+    const [myUserId, setMyUserId] = useState('')
 
     useEffect(() => {
         if (props.task?.title != '' && props.task != null) {
@@ -23,11 +27,18 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
         }
     }, [])
 
+    useEffect(() => {
+        setMyUserId(localStorage.getItem('id')!)        
+        setValues({...values, ['userId'.toString()] : myUserId})
+    }, [myUserId])
+
     const createTask = () => {
+        setMyUserId(localStorage.getItem('id')!)
+        setValues({...values, ['userId'.toString()] : myUserId})
         let validation = validateTaskBody(values)
         if (typeof validation === 'string' ) 
             Swal.fire({ icon:'error', title: validation , text:'PLEASE COMPLETE ALL REQUIRED FIELDS', footer: 'TASKMASTER', confirmButtonColor: '#254152'})
-        else httpPost("tasks", values).then((response) => {
+        else httpPost("tasks", values).then(() => {
             Swal.fire({position:'top-end', icon:'success', title:'TASK CREATED SUCCESSFULY', showConfirmButton:false, timer: 1500 });
             router.reload();
         }).catch((error) => {console.log(error)})
@@ -36,7 +47,7 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
     const updateTask = () => {
         httpPut("tasks", values, props.task?.id + '').then((response) => {router.push("/dashboard");}).catch((error) => {console.log(error)})
     }
-
+    
     return (
         <div className="container-dashboard">
         {props.task?.id != null ? (<h3>EDIT TASK</h3>) : (<h3>NEW TASK</h3>)}

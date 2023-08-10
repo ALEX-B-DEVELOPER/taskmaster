@@ -1,4 +1,4 @@
-export const taskModelSingle = { id: 1, title: "", description: "", datetime: "", priority: "", status: "" }
+export const taskModelSingle = { id: 0, title: "", description: "", datetime: "", priority: "", status: "", userId: "" }
 export const taskModel = [taskModelSingle]
 
 export function validateTaskBody(task){

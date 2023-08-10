@@ -18,20 +18,20 @@ export default function UserPanel(){
     let user, email, id;
     if(typeof window !== 'undefined'){
         if (isClient){
-            user = sessionStorage.getItem("user");
-            email = sessionStorage.getItem("email");
-            id = sessionStorage.getItem("id");
+            user = localStorage.getItem("user");
+            email = localStorage.getItem("email");
+            id = localStorage.getItem("id");
         }
     }
 
     const logout = async () => {
-        sessionStorage.clear()
+        localStorage.clear()
         router.push("/")
     }
 
     return(
         <div className="container-dashboard">
-            <h2>TASK-MASTER</h2>
+            <h2>TASK-MASTER</h2> 
             <hr />
             <div>
                 <Image className="float-start me-3" src={UserImg} alt="User" width={80} />

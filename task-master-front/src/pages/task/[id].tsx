@@ -1,3 +1,7 @@
+import "@/app/globals.css"
+import "bootstrap/dist/css/bootstrap.css"
+import "@/app/css/dashboard.css"
+import "@/app/css/container-dashboard.css"
 import { useRouter } from "next/router";
 import CreateTaskComponent from "./create";
 import { useEffect, useState } from "react";
