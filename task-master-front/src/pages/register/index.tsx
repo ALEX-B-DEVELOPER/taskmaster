@@ -13,8 +13,6 @@ import { handleInput } from "@/app/core/repository/handle-input"
 import { registerBody, validateRegisterBody } from "@/app/core/repository/register/register-body"
 import Swal from "sweetalert2"
 
-
-
 export default function RegisterComponent(){
 
     const router = useRouter();

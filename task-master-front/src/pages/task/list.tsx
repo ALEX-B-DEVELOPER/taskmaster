@@ -17,12 +17,13 @@ export default function TaskList(){
       }, [])
 
     let myTasks = tasks.filter(task => task.userId == myUserId)
-
     const results = myTasks.map((myTasks) =>
         <ContainerTask key={myTasks.id} task={myTasks} />
     );
 
     return(
-        <div className="row">{results}</div>
+        <div className="row">
+            {results}
+            </div>
     )
 }

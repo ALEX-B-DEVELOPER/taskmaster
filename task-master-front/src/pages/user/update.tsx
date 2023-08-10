@@ -33,8 +33,10 @@ export default function UpdateUserComponent(props: { user?: typeof userBody }) {
         <InputText hint="Name" id="name" value={props.user?.name} type="text" handleInput={[handleInput, values, setValues]} />
         <InputText hint="Lastname" id="lastName" value={props.user?.lastName} type="text" handleInput={[handleInput, values, setValues]} />
         <InputText hint="Email" id="email" value={props.user?.email} type="text" handleInput={[handleInput, values, setValues]} />
+        <br /><input type="file"/><button></button>
+        <br /><br /><Link href={"#"}>Change Password? click here.</Link>
         <div className="flex-center updateform">
-        <Link className="form-control btn btn-outline-light mt-3" href={"/dashboard/"}> Cancel </Link>     
+        <Link className="form-control btn btn-outline-light mt-3" href={"/dashboard/"}> Back </Link>     
         <ButtonPrimary text="Update" callBack={() => { updateUser() }} />
         </div>            
         </form>

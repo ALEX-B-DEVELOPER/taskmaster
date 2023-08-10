@@ -7,8 +7,6 @@ export default function SelectList(props: { list?: string[], value? : string, id
     
     useEffect(() => { if (props.value != null) { setSelected(props?.value)} }, [])
 
-    //console.log(selected);
-
     return (
         <select className='form-select mt-3' id={props.id} value={selected} onChange={e => {
             setSelected(e.target.value.toString());            

@@ -12,8 +12,7 @@ import router from "next/router"
 export default function DashboardComponent(){
 
    React.useEffect(()=>{
-    validateSesion();
-
+        validateSesion();
     },[])
 
     const validateSesion = ()=>{

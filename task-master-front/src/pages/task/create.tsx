@@ -55,16 +55,14 @@ export default function CreateTaskComponent(props: { task?: typeof taskModelSing
         <InputText hint="Title" id="title" value={props.task?.title} type="text" handleInput={[handleInput, values, setValues]} />
         <InputText hint="Date" id="datetime" value={setDate(props.task?.datetime)} type="date" handleInput={[handleInput, values, setValues]} />
         <InputText hint="Priority" id="priority" value={props.task?.priority} type="number" handleInput={[handleInput, values, setValues]} />       
-
         {props.task?.id != null ? (
         <SelectList list={StatusModel} id="status" value={props.task?.status} handleInput={[handleSelect, values, setValues]}/>) 
         : (<SelectList list={StatusModel} id="status" handleInput={[handleSelect, values, setValues]}/>)}
-
         <InputText hint="Description" id="description" value={props.task?.description} type="textarea" handleInput={[handleInput, values, setValues]} />
         {
             props.task?.id != null ? (
             <div className="flex-center updateform">
-            <Link className="form-control btn btn-outline-light mt-3" href={"/dashboard"}> Cancel </Link>     
+            <Link className="form-control btn btn-outline-light mt-3" href={"/dashboard"}> Back </Link>     
             <ButtonPrimary text="Update" callBack={() => { updateTask() }} /></div>            
             ) : (<ButtonPrimary text="Create Task" callBack={() => { createTask() }} />)
         }

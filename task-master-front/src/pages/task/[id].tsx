@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import CreateTaskComponent from "./create";
 import { useEffect, useState } from "react";
 import { httpGet } from "@/app/core/http-request-contract";
+import React from "react";
 
 export default function EditTaskComponent() {
 
@@ -23,6 +24,15 @@ export default function EditTaskComponent() {
             }).catch((error) => console.log(error))
         }
     }, [router.isReady])
+
+    React.useEffect(()=>{
+        validateSesion();
+    },[])
+
+    const validateSesion = ()=>{
+        if (localStorage.getItem("user") == null)
+            router.push("/")
+    }
 
     return (
         <div>{task.id != 0 ? 

@@ -8,7 +8,7 @@ export default function InputText(props: { hint: string, type: string, id: strin
     useEffect(() => { if (props.value != null) { setText(props.value) } }, [])
 
     return (
-        <input className="form-control mt-3" type={props.type} placeholder={props.hint} id={props.id} value={text} name={props.id} 
+        <input className="form-control mt-3" type={props.type} placeholder={props.hint} id={props.id} value={text} name={props.id} min={1} max={5}
             onChange={e => {
                 setText(e.target.value)
                 props.handleInput[0](e, props.handleInput[1], props.handleInput[2])
